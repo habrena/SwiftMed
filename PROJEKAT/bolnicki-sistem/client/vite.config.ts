@@ -8,9 +8,13 @@ declare const process: {
 export default defineConfig(({ mode }) => {
   // Učitavamo ekološke varijable na osnovu toga da li je 'development' ili 'production'
   const env = loadEnv(mode, '.', '')
+  
 
   return {
     plugins: [react()],
+    build: {
+      sourcemap: false,  // this is the only addition
+    },
     server: {
       proxy: {
         // Proxy radi SAMO u lokalu (npm run dev)

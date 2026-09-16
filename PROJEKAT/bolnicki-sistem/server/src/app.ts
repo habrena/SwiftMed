@@ -22,6 +22,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import routes from "./routes/router.js";
+import path from 'path';
 
 import { createServer } from "http";
 import { Server } from "socket.io";
@@ -71,6 +72,14 @@ app.use("/api", routes);
 app.get("/", (req, res) => {
   res.send("Bolnički sistem API radi!");
 });
+
+/*
+app.use(express.static(path.join(__dirname, '../../client/dist')));
+
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
+});
+*/
 
 // Socket.io setup za NFR-09
 const httpServer = createServer(app);
